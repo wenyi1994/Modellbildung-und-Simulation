@@ -4,6 +4,6 @@
 ## Uebung 6: Numerische Integration gewöhnlicher Differentialgleichungen
 Integrationsverfahren:
   * Euler-explizit  
-    x(n+1) = xn + f (xn, tn)h
+    `x(n+1) = xn + f (xn, tn)h`
   * Euler-implizit  
-    x(n+1) = xn + f (xn+1, tn+1)h
+    `x(n+1) = xn + f (xn+1, tn+1)h`
