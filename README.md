@@ -31,4 +31,4 @@ Integrationsverfahren:
  * Lösung der Gleichung mit Heun-Verfahren berechnen
  * Eigenfrequenzen mit steigenden Federsteifigkeiten wieder berechnen
  * Ergebnis plotten  
- > [Schwingerkette_Model.slx](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung6/Schwingerkette_Model.slx)
+ > [Schwingerkette_Model.slx](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung6/Schwingerkette_Model.slx) stellt das o.g. Schwingersystem in *MATLAB-Simulink* auf
