@@ -11,3 +11,9 @@ Integrationsverfahren:
     `k1(n) =h·f(xn, tn)`  
     `k2(n) =h·f(xn + k1(n) , tn + h)`  
     `x(n+1) =xn + 1/2 ·(k1(n) + k2(n))`
+  * Runge-Kutta-Verfahren (4-Ordnung)  
+    `k1(n) =h·f(xn, tn)`
+    `k2(n) =h·f(xn + k1(n)/2 , tn + h/2)`
+    `k3(n) =h·f(xn + k2(n)/2 , tn + h/2)`
+    `k4(n) =h·f(xn + k3(n) , tn + h)`
+    `x(n+1) =xn + 1/6 ·(k1(n) + 2·k2(n) + 2·k3(n) + k4(n))`
