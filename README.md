@@ -17,3 +17,10 @@ Integrationsverfahren:
     `k3(n) =h·f(xn + k2(n)/2 , tn + h/2)`  
     `k4(n) =h·f(xn + k3(n) , tn + h)`  
     `x(n+1) =xn + 1/6 ·[k1(n) + 2·k2(n) + 2·k3(n) + k4(n)]`
+
+MathPendel_Bearbeitungsfile.m
+ * Systemmatrix erstellen
+ * Anfangsbedingungen einsetzen
+ * Lösung der Gleichung mit verschiedenen numerischen Verfahren berechnen
+ * Lakale und Globale Fehler berechnen
+ * Zeitschritte optimieren und vergleichen
