@@ -24,3 +24,10 @@ Integrationsverfahren:
  * Lösung der Gleichung mit verschiedenen numerischen Verfahren berechnen
  * Lakale und Globale Fehler berechnen
  * Zeitschritte optimieren und vergleichen
+
+[Schwingerkette_Bearbeitungsfile.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung6/Schwingerkette_Bearbeitungsfile.m)
+ * Systemmatrix erstellen
+ * Anfangsbedigungen einsetzen
+ * Lösung der Gleichung mit Heun-Verfahren berechnen
+ * Eigenfrequenzen mit steigenden Federsteifigkeiten wieder berechnen
+ * Ergebnis plotten
