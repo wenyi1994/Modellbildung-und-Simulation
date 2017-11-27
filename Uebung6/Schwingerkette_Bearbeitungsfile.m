@@ -28,7 +28,7 @@ h=ts/AnzahlSchritte;        %s
 
 %% Systemmatrix
 % m*x_1" + 2k*x_1 - k*x_2 = 0
-% m*x_2" - k*x_1 + 2k*x_1 = 0
+% m*x_2" - k*x_1 + 2k*x_2 = 0
 A_Sys=[0 0 1 0; 0 0 0 1; -2*c/m c/m 0 0; c/m -2*c/m 0 0];
 
 %% Anfangsbedingungen            
