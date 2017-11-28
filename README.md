@@ -1,7 +1,7 @@
 # Modellbildung-und-Simulation
 Übungen zu Modellbildung und Simulation WS17/18 in KIT
 
-> Update 2017/11/28  
+> Update 2017/11/28
 > 1. Lokale Fehler sind nun mit Differenzequozienten zu rechnen.
 > 2. Bei Optimierung von `h` wird zuerst die Bedingung `|x(n+1)-x(n)| > delta` beurteilt.
 > 3. Euler-Implizit-Verfahren und Runge-Kutta-Verfahren mit optimierten `h` sind hinzufuegt.
