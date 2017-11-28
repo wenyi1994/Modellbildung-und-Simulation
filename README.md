@@ -30,9 +30,9 @@ Integrationsverfahren:
  * Lösung der Gleichung mit verschiedenen numerischen Verfahren berechnen
  * Lakale und Globale Fehler berechnen
  * Zeitschritte optimieren und vergleichen
- > <center>Numerische Verfahren mit fixen h</center>
+ > Numerische Verfahren mit fixen h
  > ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung6/Verfahren_m_fixen_h.jpg)
- > <center>Numerische Verfahren mit optimierten h</center>
+ > Numerische Verfahren mit optimierten h
  > ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung6/Verfahren_m_optim_h.jpg)
 
 [Schwingerkette_Bearbeitungsfile.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung6/Schwingerkette_Bearbeitungsfile.m)
