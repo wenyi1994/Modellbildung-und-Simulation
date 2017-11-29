@@ -1,10 +1,13 @@
-# Modellbildung-und-Simulation `2017/11/27`
+# Modellbildung-und-Simulation `2017/11/29`
 Übungen zu Modellbildung und Simulation WS17/18 in KIT
+
+> Update 2017/11/29
+> Bei Optimierung von `h` geht die Laufzeit von Anfangszeit aus zurück, um vorgegebenen Fehler zu beschränken.
 
 > Update 2017/11/28
 > 1. Lokale Fehler sind nun mit Differenzequozienten zu rechnen.
 > 2. Bei Optimierung von `h` wird zuerst die Bedingung `|x(n+1)-x(n)| > delta` beurteilt.
-> 3. Euler-Implizit-Verfahren und Runge-Kutta-Verfahren mit optimierten `h` sind hinzufuegt.
+> 3. Euler-Implizit-Verfahren und Runge-Kutta-Verfahren mit optimierten `h` sind hinzufügt.
 > 4. Um Rechnungszeit zu sparen, Regelmäßige Matrix ist beim Bestimmen globaler Fehler benutzt.
 
 ## Uebung 6: Numerische Integration gewöhnlicher Differentialgleichungen
