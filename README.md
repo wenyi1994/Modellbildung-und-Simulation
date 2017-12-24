@@ -6,7 +6,9 @@
 [MuS_FDM_1d.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/MuS_FDM_1d.m)
 * Räumliche Ableitung für 1. Ableitung: UDS (Upwind Difference Scheme) und CDS (Central Difference Scheme).
 * Räumliche Ableitung für 2. Ableitung: CDS.
-* Die Lösung wird iterativ gesucht. Es wird der Zeitterm zu der oben angegebenen Gleichung addiert. Hier wird explizite Euler Schema implementiert.
+* Die Lösung wird iterativ gesucht. Es wird der Zeitterm zu der oben angegebenen Gleichung addiert. Hier wird explizite Euler Schema implementiert.  
+*Output Grafik mit 'default' Parametern*
+![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/1D_default.jpg)
 
 > **Update 2017/11/29**  
 > Bei Optimierung von `h` geht die Laufzeit von Anfangszeit aus zurück, um vorgegebenen Fehler zu beschränken.
