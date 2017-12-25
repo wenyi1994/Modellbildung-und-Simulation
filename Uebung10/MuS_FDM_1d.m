@@ -8,7 +8,7 @@ function [phi_uds,phi_cds] = MuS_FDM_1d(varargin)
 %  Quelle: Joel H. Ferziger, Milovan Peric:
 %  Numerische Strömungsmechanik, Springer, 2008
 %  ----------------------------------------------------------------------
-%  [phi_uds,phi_cds] = MuS_FDM_1d('dt',dt,'nt',nt,'u0',u0,'nx',maxnx,'rho',rho,'gamma',gamma,'output',n_output,'tol',tol)
+%  [phi_uds,phi_cds] = MuS_FDM_1d('dt',dt,'nt',nt,'u0',u0,'nx',maxnx,'rho',rho,'gamma',gamma,'output',n_output,'tol',tol,'init','line')
 %  [phi_uds,phi_cds] = MuS_FDM_1d('default')
 %  [phi_uds,phi_cds] = MuS_FDM_1d('default','dt',dt,'nt',nt,...)
 %  ----------------------------------------------------------------------
@@ -27,6 +27,7 @@ function [phi_uds,phi_cds] = MuS_FDM_1d(varargin)
 %  gamma                Diffusionskoeffizient für phi
 %  n_output             Anzahl der insgesamt gegebenen Grafiken
 %  tol                  Toleranz der Convergenz
+%  init                 Modul der Initialisierung von phi, 'zero', 'line', ...
 %  ----------------------------------------------------------------------
 %  output:
 %  phi_uds              Lösung der PDGL mit UDS-Verfahren
@@ -47,6 +48,7 @@ if strcmp(varargin{1},'default')
     gamma = 0.02;
     n_output = 50;
     tol = 1e-5;
+    init_mod = 'zero';
 end
 for i = 1:nargin-1
     switch varargin{i}
@@ -73,6 +75,8 @@ for i = 1:nargin-1
         n_output = varargin{i+1};
         case 'tol'
         tol = varargin{i+1};
+        case 'init'
+        init_mod = varargin{i+1};
     end
 end
 
@@ -100,6 +104,32 @@ phi_uds(nx)=1;
 phi_cds(1)=0;
 phi_cds(nx)=1;
 
+switch init_mod
+case 'zero'
+case 'line'
+    for i = 2:nxm1
+        phi_uds(i) = (nx - i) / nx * phi_uds(1) + i / nx * phi_uds(nx);
+        phi_cds(i) = (nx - i) / nx * phi_cds(1) + i / nx * phi_cds(nx);
+    end
+case 'random'
+    for i = 2:nxm1
+        phi_uds(i) = phi_uds(1) * rand + (phi_uds(nx) - phi_uds(1)) * rand;
+        phi_cds(i) = phi_cds(1) * rand + (phi_cds(nx) - phi_cds(1)) * rand;
+    end
+case 'boundaryvalue1'
+    for i = 2:nxm1
+        phi_uds(i) = phi_uds(1);
+        phi_cds(i) = phi_cds(1);
+    end
+case 'boundaryvalue2'
+    for i = 2:nxm1
+        phi_uds(i) = phi_uds(nx);
+        phi_cds(i) = phi_cds(nx);
+    end
+otherwise
+    warning('Unexpected initialization, ''zero'' is used');
+end
+
 % Peclet-Zahl
 % Für die Änderung der Pe-Zahl können Sie natürlich beliebig rho, u oder gamma ändern
 peclet=rho*u0/gamma;
@@ -118,8 +148,10 @@ el(x_n+1) = 1;
 
 % Zur Beurteilung der Stabilität wird DCFL gerechnet.
 % (Wenn Sie eine lokale Verfeinerung verwenden, müssen Sie nach dem größten Wert suchen.)
-dcfl=2*gamma*dt/(dx*dx*rho) + u0*dt/dx;
-
+dcfl= 2*gamma*dt/(dx*dx*rho) + u0*dt/dx;
+cfl = u0*dt/dx;
+d = gamma*dt/(dx*dx*rho);
+t = rho * dx * dx / 2 / gamma;
 
 % Die Position der Stützstellen wird berechnet
 x=zeros(nx,1);
@@ -183,7 +215,7 @@ for nt=1:maxnt
         legend('exakt','uds','cds','Location','Eastoutside');
         axis([0 1 -0.2 1])
         text(0.1,0.9,['Peclet-Zahl= ',num2str(peclet),' (\rho = ',num2str(rho),', u = ',num2str(u0),', \Gamma = ',num2str(gamma),')']);
-        text(0.1,0.85,['DCFL-Zahl= ',num2str(dcfl)])
+        text(0.1,0.85,['DCFL-Zahl= ',num2str(dcfl),'(CFL = ',num2str(cfl),', D = ',num2str(d),', T = ',num2str(t),')'])
         text(0.1,0.8,['Zeit= ',num2str(zeit)])
         text(0.1,0.75,['Zeitschritt= ',num2str(dt)])
         text(0.1,0.7,['Knotenpunkte= ',num2str(nx)])
@@ -193,7 +225,7 @@ for nt=1:maxnt
         if conv_cds == 1
             text(0.1,0.55,['CDS Convergiert @ ',num2str(conv_zeit_cds),' s'])
         end
-        drawnow %in neuerer Version von Matlab soll diese Funktion zusätzlich benutzt werden
+        drawnow
     end
    
 end
