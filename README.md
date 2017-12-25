@@ -3,6 +3,9 @@
 
 ## Uebung 10: Modelle mit verteilten Parametern - Strömungssimulation mittels FDM
 ### 1D Testfall: Konvektions-Diffusionsgleichung
+> **Update 2017/12/25**
+> 1. Im Funktion kann jetzt `default` mit anderen Parametern gemischt benutzt werden, dabei Parametern in `default` übergeschrieben werden.
+> 2. Mit `'init'` Parameter kann original Phi-Wert initialisiert werden. (nun untergestützt `'random'`, `'line'`, `'zero'`, `'boundaryvalue1'`, `'boundaryvalue2'`)
 [MuS_FDM_1d.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/MuS_FDM_1d.m)
 * Räumliche Ableitung für 1. Ableitung: UDS (Upwind Difference Scheme) und CDS (Central Difference Scheme).
 * Räumliche Ableitung für 2. Ableitung: CDS.
