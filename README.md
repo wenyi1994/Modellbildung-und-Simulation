@@ -1,4 +1,4 @@
-# Modellbildung-und-Simulation `2017/12/24`
+# Modellbildung-und-Simulation `2017/12/25`
 Übungen zu Modellbildung und Simulation WS17/18 in KIT
 
 ## Uebung 10: Modelle mit verteilten Parametern - Strömungssimulation mittels FDM
@@ -10,6 +10,7 @@
 > *Output Grafik mit `'default'` Parametern* 
 > ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/1_default.jpg)
 
+## Uebung 6: Numerische Integration gewöhnlicher Differentialgleichungen
 > **Update 2017/11/29**  
 > Bei Optimierung von `h` geht die Laufzeit von Anfangszeit aus zurück, um vorgegebenen Fehler zu beschränken.
 
@@ -18,8 +19,6 @@
 > 2. Bei Optimierung von `h` wird zuerst die Bedingung `|x(n+1)-x(n)| > delta` beurteilt.
 > 3. Euler-Implizit-Verfahren und Runge-Kutta-Verfahren mit optimierten `h` sind hinzufügt.
 > 4. Um Rechnungszeit zu sparen, Regelmäßige Matrix ist beim Bestimmen globaler Fehler benutzt.
-
-## Uebung 6: Numerische Integration gewöhnlicher Differentialgleichungen
 Integrationsverfahren:
   * Euler-explizit  
     `x(n+1) = xn + f(xn, tn)·h`
