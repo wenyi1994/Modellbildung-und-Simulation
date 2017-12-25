@@ -11,8 +11,15 @@
 * Räumliche Ableitung für 1. Ableitung: UDS (Upwind Difference Scheme) und CDS (Central Difference Scheme).
 * Räumliche Ableitung für 2. Ableitung: CDS.
 * Die Lösung wird iterativ gesucht. Es wird der Zeitterm zu der oben angegebenen Gleichung addiert. Hier wird explizite Euler Schema implementiert.  
-> *Output Grafik mit `'default'` Parametern* 
+> *Output Grafik mit `'default'` Parametern*  
 > ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/1_default.jpg)
+
+### 2D Testfall: Wirbelströmung im rechteckigem Gebiet
+[MuS_FDM_2d.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/MuS_FDM_2d.m)
+* Die konvektiven Terme sind mit einer Kombination von zentralen Differenzen und einer Art Upwind Schema diskretisiert, um die Stabilität zu erhöhen.
+* Damit die Lösung des finiten Differenzen Schemas nicht oszilliert, wird hier ein versetztes Netz verwendet. Die Geschwindigkeiten werden an Zellrändern und der Druck in der Zellmitte gespeichert.
+> *Output Grafik mit `'default'` Parametern*  
+> ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/2_default.jpg)
 
 ## Uebung 6: Numerische Integration gewöhnlicher Differentialgleichungen
 > **Update 2017/11/29**  
