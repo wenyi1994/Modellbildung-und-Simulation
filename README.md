@@ -1,8 +1,12 @@
-# Modellbildung-und-Simulation `2017/12/25`
+# Modellbildung-und-Simulation `2018/01/12`
 Übungen zu Modellbildung und Simulation WS17/18 in KIT
 
 ## Uebung 10: Modelle mit verteilten Parametern - Strömungssimulation mittels FDM
 ### 1D Testfall: Konvektions-Diffusionsgleichung
+> **Updade 2018/01/12**  
+> Bei [MuS_FDM_1d.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/MuS_FDM_1d.m) werden zusätzliche Figuren geplottet, die die Tendenz der Phi-Werte im Lauf der mit Position gekoppelten Zeit beschreiben.  
+> ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/1_default_line_xt.jpg)
+
 > **Update 2017/12/25**
 > 1. Im Funktion kann jetzt `default` mit anderen Parametern gemischt benutzt werden, dabei Parametern in `default` übergeschrieben werden.
 > 2. Mit `'init'` Parameter kann original Phi-Wert initialisiert werden. (nun untergestützt `'random'`, `'line'`, `'zero'`, `'boundaryvalue1'`, `'boundaryvalue2'`)
