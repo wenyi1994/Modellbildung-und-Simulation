@@ -1,41 +1,40 @@
-function [phi_uds,phi_cds] = MuS_FDM_1d(varargin)
-%  MuS_FDM_1d.m
-%  Modellbildung und Simulation
-%  Übung zum Kapitel: Zeitkontinuierliche Modelle mit verteilten Parametern
-%  Dr.-Ing. Balazs Pritz, pritz@kit.edu
-%  1D Testfall: Konvektions-Diffusionsgleichung mit Dirichlet-Randbedingungen
-%  Diskretisierungsschema: Finite Differenzen Methode
-%  Quelle: Joel H. Ferziger, Milovan Peric:
-%  Numerische Strömungsmechanik, Springer, 2008
-%  ----------------------------------------------------------------------
-%  [phi_uds,phi_cds] = MuS_FDM_1d('dt',dt,'nt',nt,'u0',u0,'nx',maxnx,'rho',rho,'gamma',gamma,'output',n_output,'tol',tol,'init','line')
-%  [phi_uds,phi_cds] = MuS_FDM_1d('default')
-%  [phi_uds,phi_cds] = MuS_FDM_1d('default','dt',dt,'nt',nt,...)
-%  ----------------------------------------------------------------------
-%  input:
-%  I                    original image
-%  dt                   Zeitschritt
-%  maxnt                Maximale Anzahl von Zeitschritten
+function [phi_uds_t,phi_cds_t] = MuS_FDM_1d(varargin)
+% MuS_FDM_1d.m
+% Modellbildung und Simulation
+% Übung zum Kapitel: Zeitkontinuierliche Modelle mit verteilten Parametern
+% Dr.-Ing. Balazs Pritz, pritz@kit.edu
+% 1D Testfall: Konvektions-Diffusionsgleichung mit Dirichlet-Randbedingungen
+% Diskretisierungsschema: Finite Differenzen Methode
+% Quelle: Joel H. Ferziger, Milovan Peric:
+% Numerische Strömungsmechanik, Springer, 2008
+% ----------------------------------------------------------------------
+% [phi_uds,phi_cds] = MuS_FDM_1d('dt',dt,'nt',nt,'u0',u0,'nx',nx,'rho',rho,'gamma',gamma,'output',n_output,'tol',tol,'init','line')
+% [phi_uds,phi_cds] = MuS_FDM_1d('default')
+% [phi_uds,phi_cds] = MuS_FDM_1d('default','dt',dt,'nt',nt,...)
+% ----------------------------------------------------------------------
+% input:
+% dt                    Zeitschritt
+% maxnt                 Maximale Anzahl von Zeitschritten
 %                       (Simulationszeit=timestep*maxnt)
 %                       (Es ist auch möglich, dass die Simulation nicht nur
 %                       durch maxnt beendet wird, sondern die Änderung der
 %                       Lösung von zwei Zeitschritten berechnet wird und
 %                       anhand dieser ein Abbruchkriterium definiert wird.)
-%  u0                   Konvektionsgeschwindigkeit
-%  nx                   Anzahl der Knotenpunte
-%  rho                  Dichte, Anzahl oder 'water', 'air', ...
-%  gamma                Diffusionskoeffizient für phi
-%  n_output             Anzahl der insgesamt gegebenen Grafiken
-%  tol                  Toleranz der Convergenz
-%  init                 Modul der Initialisierung von phi, 'zero', 'line', ...
-%  ----------------------------------------------------------------------
-%  output:
-%  phi_uds              Lösung der PDGL mit UDS-Verfahren
-%  phi_cds              Lösung der PDGL mit CDS-Verfahren
-%  ----------------------------------------------------------------------
-%  Wen Yi, Karlsruhe Institut of Technology
-%  yi.wen@student.kit.edu
-%  2017/12/24
+% u0                    Konvektionsgeschwindigkeit
+% nx                    Anzahl der Knotenpunte
+% rho                   Dichte, Anzahl oder 'water', 'air', ...
+% gamma                 Diffusionskoeffizient für phi
+% n_output              Anzahl der insgesamt gegebenen Grafiken
+% tol                   Toleranz der Convergenz
+% init                  Modul der Initialisierung von phi, 'zero', 'line', ...
+% ----------------------------------------------------------------------
+% output:
+% phi_uds               Lösung der PDGL mit UDS-Verfahren
+% phi_cds               Lösung der PDGL mit CDS-Verfahren
+% ----------------------------------------------------------------------
+% Wen Yi, Karlsruhe Institut of Technology
+% yi.wen@student.kit.edu
+% 2017/12/24
 
 % Parametern
 if strcmp(varargin{1},'default')
@@ -45,7 +44,7 @@ if strcmp(varargin{1},'default')
     u0 = 1;
     nx = 11;
     rho = 1.25;
-    gamma = 0.02;
+    gamma = 0.01;
     n_output = 50;
     tol = 1e-5;
     init_mod = 'zero';
@@ -134,6 +133,10 @@ end
 % Für die Änderung der Pe-Zahl können Sie natürlich beliebig rho, u oder gamma ändern
 peclet=rho*u0/gamma;
 
+n=floor(maxnt/n_output);
+phi_uds_t = zeros(n_output+1,nx);
+phi_cds_t = zeros(n_output+1,nx);
+
 
 % Die exakte Lösung (wird mit besserer Auflösung gerechnet)
 x_n = floor(1/dt);
@@ -208,8 +211,7 @@ for nt=1:maxnt
     % Nach jeder n-ten Iteration soll das Ergebnis geplottet werden
     % (werden die Ergebnisse nicht in jeder Iteration dargestellt, läuft
     % die Simulation schneller)
-    n=floor(maxnt/n_output);
-    if rem(nt,n)==0
+    if rem(nt-1,n)==0
         figure(1)
         plot(xel,el,'-b',x,phi_uds,'-ro',x,phi_cds,'-kx');
         legend('exakt','uds','cds','Location','Eastoutside');
@@ -226,6 +228,9 @@ for nt=1:maxnt
             text(0.1,0.55,['CDS Convergiert @ ',num2str(conv_zeit_cds),' s'])
         end
         drawnow
+        
+        phi_uds_t(floor(nt/n)+1,:) = phi_uds';
+        phi_cds_t(floor(nt/n)+1,:) = phi_cds';
     end
    
 end
@@ -237,6 +242,33 @@ end
 if conv_cds == 0
     text(0.1,0.55,['bis ',num2str(maxnt*dt),'s CDS Convergiert nicht'])
 end
+
+[X, Y] = meshgrid(0:dx:1,0:n*dt:dt*maxnt);
+figure(2);
+clf;
+s1 = surface(X,Y,phi_uds_t,X);
+title('\Phi of UDS wrt. time');
+xlabel('x');
+ylabel('t');
+zlabel('\Phi');
+colormap(parula);
+set(s1, 'EdgeColor', 'none');
+colorbar;
+grid on;
+view(3);
+
+figure(3);
+clf;
+s2 = surface(X,Y,phi_cds_t,X);
+title('\Phi of CDS wrt. time');
+xlabel('x');
+ylabel('t');
+zlabel('\Phi');
+colormap(parula);
+set(s2, 'EdgeColor', 'none');
+colorbar;
+grid on;
+view(3);
 
 end
 % Ende Funktion
