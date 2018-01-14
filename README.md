@@ -3,6 +3,10 @@
 
 ## Uebung 10: Modelle mit verteilten Parametern - Strömungssimulation mittels FDM
 ### 1D Testfall: Konvektions-Diffusionsgleichung
+> **Update 2018/01/14**
+> 1. Zeitspannung kann jetzt durchlaufen.
+> 2. Bei Initialisierung ist Modal `'line'` fixet.
+
 > **Updade 2018/01/12**  
 > Bei [MuS_FDM_1d.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/MuS_FDM_1d.m) werden zusätzliche Figuren geplottet, die die Tendenz der Phi-Werte im Lauf der mit Position gekoppelten Zeit beschreiben.  
 > ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung10/1_default_line_xt.jpg)
