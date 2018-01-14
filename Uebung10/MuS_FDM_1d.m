@@ -107,8 +107,8 @@ switch init_mod
 case 'zero'
 case 'line'
     for i = 2:nxm1
-        phi_uds(i) = (nx - i) / nx * phi_uds(1) + i / nx * phi_uds(nx);
-        phi_cds(i) = (nx - i) / nx * phi_cds(1) + i / nx * phi_cds(nx);
+        phi_uds(i) = (nx - i) / (nx-1) * phi_uds(1) + (i-1) / (nx-1) * phi_uds(nx);
+        phi_cds(i) = (nx - i) / (nx-1) * phi_cds(1) + (i-1) / (nx-1) * phi_cds(nx);
     end
 case 'random'
     for i = 2:nxm1
@@ -136,6 +136,9 @@ peclet=rho*u0/gamma;
 n=floor(maxnt/n_output);
 phi_uds_t = zeros(n_output+1,nx);
 phi_cds_t = zeros(n_output+1,nx);
+
+phi_uds_t(1,:) = phi_uds';
+phi_cds_t(1,:) = phi_cds';
 
 
 % Die exakte Lösung (wird mit besserer Auflösung gerechnet)
@@ -211,7 +214,7 @@ for nt=1:maxnt
     % Nach jeder n-ten Iteration soll das Ergebnis geplottet werden
     % (werden die Ergebnisse nicht in jeder Iteration dargestellt, läuft
     % die Simulation schneller)
-    if rem(nt-1,n)==0
+    if rem(nt,n)==0
         figure(1)
         plot(xel,el,'-b',x,phi_uds,'-ro',x,phi_cds,'-kx');
         legend('exakt','uds','cds','Location','Eastoutside');
