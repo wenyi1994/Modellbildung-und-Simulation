@@ -3,7 +3,7 @@
 
 ## Uebung 11: Finite-Elemente-Methode
 [fem_Bearbeitungsfile.m](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung11/fem_Bearbeitungsfile.m)  
-Gegeben ist ein einseitig eingespannter Stab mit konisch zulaufendem rechteckigen Querschnitt (Abbildung links).  
+* Gegeben ist ein einseitig eingespannter Stab mit konisch zulaufendem rechteckigen Querschnitt (Abbildung links).  
 ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung11/Abbildung.png)  
 Das Tragwerk soll mit linearen Elementen erster Ordnung mit den Knoten `a[i]` und `b[i]` diskretisiert werden (Abbildung rechts).  
 > Die folgende Abbildung zeigt exakte Lösung (approximiert durch `Matlab ODE45-Solver`) und numerische Lösung (FEM unter 100 Elemente).  
