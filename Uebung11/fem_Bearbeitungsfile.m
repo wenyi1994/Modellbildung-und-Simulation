@@ -1,4 +1,20 @@
 function [u,fa] = fem_Bearbeitungsfile(M)
+% fem_Bearbeitungsfile.m
+% Modellbildung und Simulation
+% Übung zum Kapitel: Numerische Lösungsverfahren für partielle DGLen: Finite-Elemente-Methode
+% ----------------------------------------------------------------------
+% [u,fa] = fem_Bearbeitungsfile(M)
+% ----------------------------------------------------------------------
+% input:
+% M                     Anzahl der Elemente
+% ----------------------------------------------------------------------
+% output:
+% u                     Verschiebung verschiedener Stelle (x)
+% fa                    Reaktionskraft an Stabrand
+% ----------------------------------------------------------------------
+% Wen Yi, Karlsruhe Institut of Technology
+% yi.wen@student.kit.edu
+% 2018/01/20
 close all;
 
 %% Parameter
