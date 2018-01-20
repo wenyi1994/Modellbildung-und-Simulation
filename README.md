@@ -4,8 +4,9 @@
 ## Uebung 11: Finite-Elemente-Methode
 Gegeben ist ein einseitig eingespannter Stab mit konisch zulaufendem rechteckigen Querschnitt (Abbildung links).  
 ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung11/Abbildung.png)  
-Das Tragwerk soll mit linearen Elementen erster Ordnung mit den Knoten `a[i]` und `b[i]` diskretisiert werden (Abbildung rechts). Die folgende Abbildung zeigt exakte Lösung (approximiert durch `Matlab ODE45-Solver`) und numerische Lösung (FEM unter 100 Elemente).  
-![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung11/fem_100.jpg)
+Das Tragwerk soll mit linearen Elementen erster Ordnung mit den Knoten `a[i]` und `b[i]` diskretisiert werden (Abbildung rechts).  
+> Die folgende Abbildung zeigt exakte Lösung (approximiert durch `Matlab ODE45-Solver`) und numerische Lösung (FEM unter 100 Elemente).  
+> ![image](https://github.com/wenyi1994/Modellbildung-und-Simulation/blob/master/Uebung11/fem_100.jpg)
 
 ## Uebung 10: Modelle mit verteilten Parametern - Strömungssimulation mittels FDM
 ### 1D Testfall: Konvektions-Diffusionsgleichung
